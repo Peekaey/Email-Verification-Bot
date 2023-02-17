@@ -7,6 +7,8 @@ export default (client: Client): void => {
             return;
         }
         await client.application.commands.set(Commands);
+        client.user.setActivity(`with ${client.guilds.cache.size} guild(s)`);
         console.log(`${client.user.username} is online`);
+        
     });
 }; 
