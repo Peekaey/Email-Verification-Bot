@@ -3,9 +3,9 @@ Discord email verification bot written in Typescript using DiscordJs, Sendgrid, 
 - Requires a database(MySQL/Mariadb) and the relevent connector specified in the .env file to work
 
 Uses 
-- `/sendemail` command with a specified to send an email to users
+- `/sendemail` command with a specified email to send an email to users
 - `/verify` command with a token provided from the email to gain a role
-- `/ping` command to give bot latency (used to test if bot is alive)
+- `/ping` command to check bot latency (used to test if bot is alive)
 
 #### To Do
 - Refactoring (give better variable names and refactor)
