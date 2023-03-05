@@ -1,6 +1,4 @@
 import { CommandInteraction, Client, Interaction, ContextMenuCommandBuilder, ApplicationCommandType} from "discord.js";
-
-//Unsure if this line underneath needs to be here
 import { Commands } from "../Commands";
 
 const data = new ContextMenuCommandBuilder()

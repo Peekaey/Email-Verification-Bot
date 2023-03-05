@@ -1,5 +1,8 @@
 import { Command } from "./Command";
-import { Hello } from "./commands/Hello";
-import { Ping } from "./commands/Ping"
+import { Ping } from "./commands/Ping";
+import { SendEmail } from "./commands/SendEmail";
+import { Verify } from "./commands/Verify";
 
-export const Commands: Command[] = [Hello, Ping]; 
+
+
+export const Commands: Command[] = [Ping, SendEmail, Verify]; 

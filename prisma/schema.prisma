@@ -1,0 +1,21 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DBHOST")
+}
+
+model verifiedUsers {
+  user_id    String    @id @db.VarChar(100)
+  discordId  String?   @db.VarChar(100)
+  email      String?   @db.VarChar(100)
+  created_at DateTime? @default(now()) @db.Timestamp(0)
+}
+
+model tempUsers {
+  email             String  @id @db.VarChar(100)
+  verificationToken String? @db.VarChar(50)
+  verified          Int?
+}

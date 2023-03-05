@@ -3,10 +3,10 @@ import { Command } from "../Command";
 
 export const Ping: Command = {
     name: "ping",
-    description: "Sample Text",
+    description: "Get the current ping of the bot",
     run: async (client: Client, interaction: CommandInteraction) => {
-        const content = "Fake Ping Content";
-
+        const ping = Date.now() - interaction.createdTimestamp;
+        const content = `Pong! Latency: ${ping}ms`;
         await interaction.followUp({
             ephemeral: true,
             content
