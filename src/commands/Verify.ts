@@ -10,7 +10,7 @@ export const Verify: Command = {
     description: "Verify the user",
     options: [{
         name: "message",
-        description: "The message to repeat",
+        description: "Grab user provided token",
         type: 3,
         required: true
     }],
@@ -44,11 +44,10 @@ export const Verify: Command = {
           return userEmail?.email ?? '';
         }
 
+        // Grabbing message author information
         let authorId = interaction.user.id
         let authorUsername = interaction.user.tag;
         let email = await GrabUserEmail();
-
-
 
       // Attempts to see if email from tempUsers matches any emails in verifiedUsers
       async function checkIfEmailExists(email: string): Promise<boolean> {
@@ -60,10 +59,9 @@ export const Verify: Command = {
         return Boolean(result);
       }
 
-
-
       const emailExists = await checkIfEmailExists(email);
       
+      // If email in tempUser doesn't match any in verifiedUser - add new entry
       if (!emailExists) {
 
         const addUser = await prisma.verifiedUsers.create({
@@ -75,14 +73,23 @@ export const Verify: Command = {
             },
           });
 
-            console.log ("Tokens Match")
+          const addVerifiedStatus = await prisma.tempUsers.update({
+            where: {
+              email: email,
+            },
+            data: {
+              verified: 1,
+            },
+          })
+
             response = "Tokens Match, You have been verified and the {ROLE} has been assigned to you";
 
+      // If email already exists in verifiedUsers - does no action
       } else if (emailExists) {
             response = "Email using this token has already been verified"
       }
     }
-      
+      // Response to if the provided token is unable to find a match
       if (!TokenMatch) {
         response = "Provided token does not match any in the system, please recheck your email and try again";
       }
