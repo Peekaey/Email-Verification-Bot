@@ -12,6 +12,3 @@ Uses
 - Documentation
 - Add docker file
 - .env example file
-<<<<<<< HEAD
-=======
->>>>>>> d8c1bcee1dd99c535d5112fe842f7e8094def382
