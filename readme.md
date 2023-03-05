@@ -1,5 +1,6 @@
 #### About
-Discord email verification bot build in Typescript using DiscordJS and Prisma with MariaDB as a backend database with plans to be deployable in a docker container
+Discord email verification bot written in Typescript using DiscordJs, Sendgrid, PrismaORM to validate and store user details and an email.
+- Requires a database(MySQL/Mariadb) and the relevent connector specified in the .env file to work
 
 Uses 
 - `/sendemail` command with a specified to send an email to users
@@ -9,3 +10,5 @@ Uses
 #### To Do
 - Refactoring (give better variable names and refactor)
 - Documentation
+- Add docker file
+- .env example file
