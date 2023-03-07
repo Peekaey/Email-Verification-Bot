@@ -10,7 +10,7 @@ const VerifiedSendor = process.env.VERIFIEDSENDOR;
 
 export const SendEmail: Command = {
   name: "sendemail",
-  description: "Sends an email to a user",
+  description: "Enter an email address that the bot can send a verification token to",
   options: [
     {
       name: "message",

@@ -1,4 +1,4 @@
-import { CommandInteraction, Client} from "discord.js";
+import { CommandInteraction, Client, Guild, Role, GuildMemberRoleManager, GuildMember, Message, GuildMemberFlags, RoleManager, User} from "discord.js";
 import { Command } from "../Command";
 
 import { PrismaClient } from "@prisma/client";
@@ -7,7 +7,7 @@ const prisma = new PrismaClient();
 
 export const Verify: Command = {
     name: "verify",
-    description: "Verify the user",
+    description: "Enter the token provided in the email, if the token matches you will be provided with a verified role",
     options: [{
         name: "message",
         description: "Grab user provided token",
@@ -82,7 +82,22 @@ export const Verify: Command = {
             },
           })
 
-            response = "Tokens Match, You have been verified and the {ROLE} has been assigned to you";
+          // Set to your own existing guild ID and roleID
+          const guild = client.guilds.cache.get("1082255348372619265");
+
+          if (guild) {
+            const role = guild.roles.cache.get("1082261454629118032");
+            const member = await guild.members.fetch(authorId);
+            if (role) {
+              member.roles.add(role);
+            } else if (!role) {
+              console.log("Role Doesn't Exist");
+            }
+          } else if (!guild) {
+            console.log("Guild does not exist");
+          }
+
+          response = "Tokens Match, You have been verified and the 'Verified' role has been assigned to you";
 
       // If email already exists in verifiedUsers - does no action
       } else if (emailExists) {
