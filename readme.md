@@ -8,10 +8,7 @@ Uses
 - `/ping` command to check bot latency (used to test if bot is alive)
 
 #### To Do
-- Refactoring (give better variable names and refactor)
+- Auto gen of database schema
 - Documentation
 - Add docker file
 - .env example file
-<<<<<<< HEAD
-=======
->>>>>>> d8c1bcee1dd99c535d5112fe842f7e8094def382
